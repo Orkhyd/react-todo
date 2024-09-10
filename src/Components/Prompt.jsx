@@ -16,7 +16,7 @@ function Prompt(props) {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="new-todo-input" className="label__lg">
-        Ajouter une nouvelle tâche :
+        Add a new task :
       </label>
 
       <input

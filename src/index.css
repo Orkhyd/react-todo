@@ -3,6 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 }
+
+.todo-label {
+  padding-left: 5px;
+}
+
 .column-wrap {
   display: flex;
   justify-content: space-around;
@@ -41,4 +46,23 @@ label {
 
 .pad-top {
   padding-top: 20px;
+}
+
+.todo-checkbox {
+  margin-bottom: 0;
+}
+
+.c-cb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius: 5px;
+  padding-right: 5px;
+}
+
+.taskList {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 5px;
 }

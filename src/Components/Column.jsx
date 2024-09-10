@@ -8,6 +8,10 @@ function Column(props) {
     return await db.tasks.get(id);
   };
 
+  const deleteTask = async (id) => {
+    await db.tasks.delete(id);
+  };
+
   const columnItems = props.tasks
     .filter(props.map[props.name])
     .map((task) => (
@@ -17,13 +21,14 @@ function Column(props) {
         completed={task.completed === "true"}
         key={task.id}
         toggleTaskCompleted={markAsDone}
+        deleteTask={deleteTask}
       />
     ));
 
   return (
     <div>
       <h2>{props.name}</h2>
-      <ul>{columnItems}</ul>
+      <ul className="taskList">{columnItems}</ul>
     </div>
   );
 }
