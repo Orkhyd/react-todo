@@ -5,8 +5,8 @@ function Todo(props) {
         <input
           id={props.id}
           type="checkbox"
-          defaultChecked={props.completed}
-          onChange={() => props.toggleTaskCompleted(props.id)}
+          checked={props.completed}
+          onChange={(event) => props.toggleTaskCompleted(props.id, event)}
         />
         <label className="todo-label" htmlFor={props.id}>
           {props.name}

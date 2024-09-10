@@ -1,28 +1,24 @@
-import { useState } from "react";
 import Todo from "./Todo";
+import { db } from "../utils/db";
 
 function Column(props) {
+  const markAsDone = async (id, event) => {
+    const newCompleted = event.target.checked ? "true" : "false";
+    await db.tasks.update(id, { completed: newCompleted });
+    return await db.tasks.get(id);
+  };
+
   const columnItems = props.tasks
     .filter(props.map[props.name])
     .map((task) => (
       <Todo
         id={task.id}
         name={task.name}
-        completed={task.completed}
+        completed={task.completed === "true"}
         key={task.id}
-        toggleTaskCompleted={toggleTaskCompleted}
+        toggleTaskCompleted={markAsDone}
       />
     ));
-
-  function toggleTaskCompleted(id) {
-    const updatedTasks = props.tasks.map((task) => {
-      if (id === task.id) {
-        return { ...task, completed: !task.completed };
-      }
-      return task;
-    });
-    props.setTasks(updatedTasks);
-  }
 
   return (
     <div>

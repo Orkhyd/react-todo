@@ -32,8 +32,13 @@ h2 {
 
 .centered {
   text-align: center;
+  margin: auto;
 }
 
 label {
   padding-right: 10px;
+}
+
+.pad-top {
+  padding-top: 20px;
 }

@@ -1,41 +1,40 @@
-import { useState } from "react";
 import Column from "./Components/Column";
 import Prompt from "./Components/Prompt";
-import { nanoid } from "nanoid";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./utils/db";
+import DeleteButton from "./Components/DeleteButton";
 
 const COLUMN_MAP = {
-  "To do": (task) => !task.completed,
-  Done: (task) => task.completed,
+  "To do": (task) => task.completed === "false",
+  Done: (task) => task.completed === "true",
 };
 
 const COLUMN_NAMES = Object.keys(COLUMN_MAP);
 
-function App(props) {
-  const [tasks, setTasks] = useState(props.tasks);
-  const Tasks = useLiveQuery(() => db.tasks.toArray());
+function App() {
+  const Tasks = useLiveQuery(async () => await db.tasks.toArray());
+  if (!Tasks) return null;
 
   const columnList = COLUMN_NAMES.map((name) => (
-    <Column
-      name={name}
-      key={name}
-      tasks={tasks}
-      setTasks={setTasks}
-      map={COLUMN_MAP}
-    />
+    <Column name={name} key={name} tasks={Tasks} map={COLUMN_MAP} />
   ));
 
   function addTask(name) {
-    const newTask = { id: `todo-${nanoid()}`, name, completed: false };
-    setTasks([...tasks, newTask]);
+    db.tasks.add({ name, completed: "false" });
+  }
+
+  function clearAllFinishedTasks() {
+    db.tasks.where("completed").equals("true").delete();
   }
 
   return (
     <>
       <h1>To Do List</h1>
       <div className="column-wrap">{columnList}</div>
-      <Prompt addTask={addTask} />
+      <div className="column-wrap pad-top">
+        <Prompt addTask={addTask} />
+        <DeleteButton deleteAllTasks={clearAllFinishedTasks} />
+      </div>
     </>
   );
 }
