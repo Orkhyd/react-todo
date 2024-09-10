@@ -2,8 +2,7 @@ import { useState } from "react";
 import Todo from "./Todo";
 
 function Column(props) {
-  const [tasks, setTasks] = useState(props.tasks);
-  const columnItems = tasks
+  const columnItems = props.tasks
     .filter(props.map[props.name])
     .map((task) => (
       <Todo
@@ -16,13 +15,13 @@ function Column(props) {
     ));
 
   function toggleTaskCompleted(id) {
-    const updatedTasks = tasks.map((task) => {
+    const updatedTasks = props.tasks.map((task) => {
       if (id === task.id) {
         return { ...task, completed: !task.completed };
       }
       return task;
     });
-    setTasks(updatedTasks);
+    props.setTasks(updatedTasks);
   }
 
   return (
