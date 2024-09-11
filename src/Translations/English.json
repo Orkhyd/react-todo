@@ -1,4 +1,6 @@
 {
   "line1": "To Do List",
-  "line2": "Second line"
+  "line2": "Second line",
+  "todo": "To Do",
+  "done": "Done"
 }

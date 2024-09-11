@@ -5,20 +5,23 @@ import { db } from "./utils/db";
 import DeleteButton from "./Components/DeleteButton";
 import { useLanguageContext } from "./Context/LanguageContext";
 
-const COLUMN_MAP = {
-  "To do": (task) => task.completed === "false",
-  Done: (task) => task.completed === "true",
-};
-
-const COLUMN_NAMES = Object.keys(COLUMN_MAP);
-
 function App() {
   const Tasks = useLiveQuery(async () => await db.tasks.toArray());
   const { t } = useLanguageContext();
+
+  const COLUMN_MAP = {
+    "To do": {
+      filter: (task) => task.completed === "false",
+      name: `${t("todo")}`,
+    },
+    Done: { filter: (task) => task.completed === "true", name: `${t("done")}` },
+  };
+
+  const COLUMN_NAMES = Object.keys(COLUMN_MAP);
   if (!Tasks) return null;
 
-  const columnList = COLUMN_NAMES.map((name) => (
-    <Column name={name} key={name} tasks={Tasks} map={COLUMN_MAP} />
+  const columnList = COLUMN_NAMES.map((col) => (
+    <Column name={col} key={col} tasks={Tasks} map={COLUMN_MAP} />
   ));
 
   function addTask(name) {
