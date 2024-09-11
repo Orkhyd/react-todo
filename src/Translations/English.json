@@ -1,6 +1,7 @@
 {
-  "line1": "To Do List",
-  "line2": "Second line",
+  "title": "To Do List",
   "todo": "To Do",
-  "done": "Done"
+  "done": "Done",
+  "addtask": "Add a task :",
+  "clearall": "Clear all done tasks"
 }

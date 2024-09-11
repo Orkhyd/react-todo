@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <h1>{t("line1")}</h1>
+      <h1>{t("title")}</h1>
       <div className="column-wrap">{columnList}</div>
       <div className="func">
         <div className="column-wrap pad-top">

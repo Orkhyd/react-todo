@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useLanguageContext } from "../Context/LanguageContext";
 
 function Prompt(props) {
+  const { t } = useLanguageContext();
+
   const [name, setName] = useState("");
 
   function handleSubmit(event) {
@@ -16,7 +19,7 @@ function Prompt(props) {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="new-todo-input" className="label__lg">
-        Add a new task :
+        {t("addtask")}
       </label>
 
       <input

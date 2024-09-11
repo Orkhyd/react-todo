@@ -1,6 +1,7 @@
 {
-  "line1": "Liste de tâches",
-  "line2": "Seconde ligne",
+  "title": "Liste de tâches",
   "todo": "A Faire",
-  "done": "Fait"
+  "done": "Effectuées",
+  "addtask": "Nouvelle tâche :",
+  "clearall": "Enlever les tâches finies"
 }

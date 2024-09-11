@@ -1,6 +1,10 @@
+import { useLanguageContext } from "../Context/LanguageContext";
+
 function DeleteButton(props) {
+  const { t } = useLanguageContext();
+
   return (
-    <button onClick={() => props.deleteAllTasks()}>Clear all done tasks</button>
+    <button onClick={() => props.deleteAllTasks()}>{t("clearall")}</button>
   );
 }
 
