@@ -46,6 +46,8 @@ label {
 
 .pad-top {
   padding-top: 20px;
+  width: 70%;
+
 }
 
 .todo-checkbox {
@@ -65,4 +67,9 @@ label {
   display: grid;
   grid-auto-flow: row;
   grid-row-gap: 5px;
+}
+
+.func {
+  display: flex;
+  justify-content: center;
 }

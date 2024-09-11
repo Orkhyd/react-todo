@@ -31,9 +31,11 @@ function App() {
     <>
       <h1>To Do List</h1>
       <div className="column-wrap">{columnList}</div>
-      <div className="column-wrap pad-top">
-        <Prompt addTask={addTask} />
-        <DeleteButton deleteAllTasks={clearAllFinishedTasks} />
+      <div className="func">
+        <div className="column-wrap pad-top">
+          <Prompt addTask={addTask} />
+          <DeleteButton deleteAllTasks={clearAllFinishedTasks} />
+        </div>
       </div>
     </>
   );
