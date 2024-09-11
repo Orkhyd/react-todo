@@ -3,6 +3,7 @@ import Prompt from "./Components/Prompt";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./utils/db";
 import DeleteButton from "./Components/DeleteButton";
+import { useLanguageContext } from "./Context/LanguageContext";
 
 const COLUMN_MAP = {
   "To do": (task) => task.completed === "false",
@@ -13,6 +14,7 @@ const COLUMN_NAMES = Object.keys(COLUMN_MAP);
 
 function App() {
   const Tasks = useLiveQuery(async () => await db.tasks.toArray());
+  const { t } = useLanguageContext();
   if (!Tasks) return null;
 
   const columnList = COLUMN_NAMES.map((name) => (
@@ -29,7 +31,7 @@ function App() {
 
   return (
     <>
-      <h1>To Do List</h1>
+      <h1>{t("line1")}</h1>
       <div className="column-wrap">{columnList}</div>
       <div className="func">
         <div className="column-wrap pad-top">
