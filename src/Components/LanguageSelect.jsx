@@ -12,6 +12,7 @@ const LanguageSelect = () => {
         height: "40px",
       }}
       onChange={onClickLanguageChange}
+      defaultValue={window.localStorage.getItem("language")}
     >
       {Object.keys(languages).map((lng) => (
         <option key={languages[lng].nativeName} value={lng}>

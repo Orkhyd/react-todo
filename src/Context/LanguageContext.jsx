@@ -13,6 +13,7 @@ export const LanguageContextProvider = ({ children }) => {
   const onClickLanguageChange = (e) => {
     const language = e.target.value;
     i18n.changeLanguage(language);
+    window.localStorage.setItem("language", language);
   };
 
   return (
