@@ -22,6 +22,7 @@ function Column(props) {
         key={task.id}
         toggleTaskCompleted={markAsDone}
         deleteTask={deleteTask}
+        dateCreated={task.dateCreated}
       />
     ));
 

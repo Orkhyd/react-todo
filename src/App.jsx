@@ -14,13 +14,14 @@ const COLUMN_NAMES = Object.keys(COLUMN_MAP);
 function App() {
   const Tasks = useLiveQuery(async () => await db.tasks.toArray());
   if (!Tasks) return null;
-
   const columnList = COLUMN_NAMES.map((name) => (
     <Column name={name} key={name} tasks={Tasks} map={COLUMN_MAP} />
   ));
 
   function addTask(name) {
-    db.tasks.add({ name, completed: "false" });
+    console.log(
+      db.tasks.add({ name, completed: "false", dateCreated: new Date() })
+    );
   }
 
   function clearAllFinishedTasks() {

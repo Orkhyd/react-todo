@@ -1,7 +1,12 @@
+import moment from "moment";
+
 function Todo(props) {
   return (
     <>
-      <div className="c-cb">
+      <div
+        className="c-cb"
+        title={"Created " + moment(props.dateCreated).fromNow().toString()}
+      >
         <div className="inner-c-cb">
           <input
             id={props.id}
@@ -11,6 +16,7 @@ function Todo(props) {
             onChange={(event) => props.toggleTaskCompleted(props.id, event)}
           />
           <label className="todo-label" htmlFor={props.id}>
+            {/* {moment(props.dateCreated).fromNow().toString()} */}
             {props.name}
           </label>
         </div>
