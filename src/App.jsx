@@ -25,7 +25,9 @@ function App() {
   ));
 
   function addTask(name) {
-    db.tasks.add({ name, completed: "false" });
+    console.log(
+      db.tasks.add({ name, completed: "false", dateCreated: new Date() })
+    );
   }
 
   function clearAllFinishedTasks() {

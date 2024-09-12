@@ -4,8 +4,13 @@ import { db } from "../utils/db";
 function Column(props) {
   const markAsDone = async (id, event) => {
     const newCompleted = event.target.checked ? "true" : "false";
-    await db.tasks.update(id, { completed: newCompleted });
-    return await db.tasks.get(id);
+    await db.tasks.update(id, {
+      completed: newCompleted,
+      dateCompleted: new Date(),
+    });
+    const ans = await db.tasks.get(id);
+    console.log(ans);
+    return ans;
   };
 
   const deleteTask = async (id) => {
@@ -22,6 +27,8 @@ function Column(props) {
         key={task.id}
         toggleTaskCompleted={markAsDone}
         deleteTask={deleteTask}
+        dateCreated={task.dateCreated}
+        dateCompleted={task.dateCompleted}
       />
     ));
 

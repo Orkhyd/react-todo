@@ -1,7 +1,32 @@
+import moment from "moment";
+import { useState } from "react";
+
 function Todo(props) {
+  const [timeSinceCreated, setTimeSinceCreated] = useState(
+    moment(props.dateCreated).fromNow().toString()
+  );
+
+  const [timeSinceCompleted, setTimeSinceCompleted] = useState(
+    moment(props.dateCompleted).fromNow().toString()
+  );
   return (
     <>
-      <div className="c-cb">
+      <div
+        className="c-cb"
+        onMouseEnter={() => {
+          setTimeSinceCreated(moment(props.dateCreated).fromNow().toString());
+          console.log(timeSinceCreated);
+          setTimeSinceCompleted(
+            moment(props.dateCompleted).fromNow().toString()
+          );
+          console.log(timeSinceCompleted);
+        }}
+        title={
+          props.completed
+            ? "Completed " + timeSinceCompleted
+            : "Created " + timeSinceCreated
+        }
+      >
         <div className="inner-c-cb">
           <input
             id={props.id}
@@ -11,6 +36,7 @@ function Todo(props) {
             onChange={(event) => props.toggleTaskCompleted(props.id, event)}
           />
           <label className="todo-label" htmlFor={props.id}>
+            {/* {moment(props.dateCreated).fromNow().toString()} */}
             {props.name}
           </label>
         </div>
