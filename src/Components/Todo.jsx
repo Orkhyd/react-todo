@@ -1,11 +1,31 @@
 import moment from "moment";
+import { useState } from "react";
 
 function Todo(props) {
+  const [timeSinceCreated, setTimeSinceCreated] = useState(
+    moment(props.dateCreated).fromNow().toString()
+  );
+
+  const [timeSinceCompleted, setTimeSinceCompleted] = useState(
+    moment(props.dateCompleted).fromNow().toString()
+  );
   return (
     <>
       <div
         className="c-cb"
-        title={"Created " + moment(props.dateCreated).fromNow().toString()}
+        onMouseEnter={() => {
+          setTimeSinceCreated(moment(props.dateCreated).fromNow().toString());
+          console.log(timeSinceCreated);
+          setTimeSinceCompleted(
+            moment(props.dateCompleted).fromNow().toString()
+          );
+          console.log(timeSinceCompleted);
+        }}
+        title={
+          props.completed
+            ? "Completed " + timeSinceCompleted
+            : "Created " + timeSinceCreated
+        }
       >
         <div className="inner-c-cb">
           <input
