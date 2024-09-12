@@ -3,5 +3,7 @@
   "todo": "To Do",
   "done": "Done",
   "addtask": "Add a task :",
-  "clearall": "Clear all done tasks"
+  "clearall": "Clear all done tasks",
+  "completed": "Completed ",
+  "created": "Created "
 }

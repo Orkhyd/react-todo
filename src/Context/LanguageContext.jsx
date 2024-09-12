@@ -1,5 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { useTranslation } from "react-i18next";
+import moment from "moment";
+import "moment/dist/locale/fr";
 
 export const LanguageContext = createContext(undefined);
 export const LanguageContextProvider = ({ children }) => {
@@ -13,6 +15,8 @@ export const LanguageContextProvider = ({ children }) => {
   const onClickLanguageChange = (e) => {
     const language = e.target.value;
     i18n.changeLanguage(language);
+    moment.locale(window.localStorage.getItem(language));
+
     window.localStorage.setItem("language", language);
   };
 

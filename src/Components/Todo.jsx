@@ -1,7 +1,9 @@
 import moment from "moment";
 import { useState } from "react";
+import { useLanguageContext } from "../Context/LanguageContext";
 
 function Todo(props) {
+  const { t } = useLanguageContext();
   const [timeSinceCreated, setTimeSinceCreated] = useState(
     moment(props.dateCreated).fromNow().toString()
   );
@@ -23,8 +25,8 @@ function Todo(props) {
         }}
         title={
           props.completed
-            ? "Completed " + timeSinceCompleted
-            : "Created " + timeSinceCreated
+            ? t("completed") + timeSinceCompleted
+            : t("created") + timeSinceCreated
         }
       >
         <div className="inner-c-cb">
