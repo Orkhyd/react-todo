@@ -18,7 +18,7 @@ function Column(props) {
   };
 
   const columnItems = props.tasks
-    .filter(props.map[props.name])
+    .filter(props.map[props.name].filter)
     .map((task) => (
       <Todo
         id={task.id}
@@ -34,7 +34,7 @@ function Column(props) {
 
   return (
     <div>
-      <h2>{props.name}</h2>
+      <h2>{props.map[props.name].name}</h2>
       <ul className="taskList">{columnItems}</ul>
     </div>
   );
