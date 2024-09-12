@@ -3,5 +3,7 @@
   "todo": "A Faire",
   "done": "Effectuées",
   "addtask": "Nouvelle tâche :",
-  "clearall": "Enlever les tâches finies"
+  "clearall": "Enlever les tâches finies",
+  "completed": "Complétée ",
+  "created": "Créée "
 }

@@ -4,10 +4,13 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./utils/db";
 import DeleteButton from "./Components/DeleteButton";
 import { useLanguageContext } from "./Context/LanguageContext";
+import moment from "moment";
 
 function App() {
   const Tasks = useLiveQuery(async () => await db.tasks.toArray());
   const { t } = useLanguageContext();
+
+  moment.locale(window.localStorage.getItem("language"));
 
   const COLUMN_MAP = {
     "To do": {
